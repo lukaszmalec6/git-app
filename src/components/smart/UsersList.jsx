@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchUsersList } from "../../redux/Thunk";
-
+import UserCard from "../dumb/UserCard/UserCard.jsx";
 class UsersList extends Component {
   componentWillMount() {
     this.props.fetchUsersList(0);
@@ -13,11 +13,8 @@ class UsersList extends Component {
   render() {
     return (
       <div>
-        <h1>User list</h1>
-        {this.props.users.map(item => (
-          <div key={item.id}>
-            <Link to={"/" + item.login}>{item.login}</Link>
-          </div>
+        {this.props.users.map(user => (
+          <UserCard key={user.id} login={user.login} av={user.avatar_url} />
         ))}
         <button onClick={() => this.handlePagination()}>View more</button>
       </div>

@@ -1,7 +1,45 @@
-$mainColor: #7777bb;
-.intro-component {
-  color: $mainColor;
+$gray: #e8e8e8;
+$darkGray: #777777;
+body {
+  margin: 0;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $gray;
+
+  img {
+    padding: 6rem 0rem 6rem 0rem;
+    width: 30%;
+    height: 30%;
+  }
+}
+
+.user-card-container {
+  box-shadow: 0rem 0.35rem 0.7rem rgba(0, 0, 0, 0.274);
+  margin: 1rem 0rem 1rem 0rem;
+  padding: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   h1 {
-    text-transform: uppercase;
+    color: $darkGray;
+    font-size: 3rem;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: normal;
+  }
+  div {
+    display: flex;
+    align-items: center;
+  }
+  img {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 10rem;
+    margin-right: 2rem;
   }
 }
