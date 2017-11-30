@@ -1,0 +1,15 @@
+@import "./colors.scss";
+.button {
+  align-self: center;
+  margin: 0.4em;
+  padding: 0.8em 1em 0.8em 1em;
+  border-radius: 10%;
+  font-size: 2em;
+  background-color: $coolBlue;
+  box-shadow: 0em 0.4em 0.4em rgba(0, 0, 0, 0.178);
+  a {
+    color: white;
+    text-align: center;
+    text-decoration: none;
+  }
+}

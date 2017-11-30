@@ -1,21 +1,34 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchUsersList } from "../../redux/Thunk";
-import UserCard from "../dumb/UserCard/UserCard.jsx";
+import UserCard from "../dumb/UserCard.jsx";
+
 class UsersList extends Component {
   componentWillMount() {
-    this.props.fetchUsersList(0);
+    {
+      this.props.users.length === 0 ? this.props.fetchUsersList(0) : null;
+    }
   }
   handlePagination = () => {
     this.props.fetchUsersList(this.props.next);
   };
   render() {
     return (
-      <div>
-        {this.props.users.map(user => (
-          <UserCard key={user.id} login={user.login} av={user.avatar_url} />
-        ))}
-        <button onClick={() => this.handlePagination()}>View more</button>
+      <div className="container">
+        <section className="users-list-page">
+          {this.props.users.map(user => (
+            <UserCard
+              key={user.id}
+              login={user.login}
+              av={user.avatar_url}
+              type={user.type}
+              gitUrl={user.html_url}
+            />
+          ))}
+        </section>
+        <button className="button" onClick={() => this.handlePagination()}>
+          View more
+        </button>
       </div>
     );
   }

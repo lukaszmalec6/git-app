@@ -2,12 +2,16 @@ import { Route } from "react-router";
 import React, { Component } from "react";
 import "../sass/main.scss";
 import Logo from "../assets/github.png";
-export default class Layout extends Component {
+import { Link } from "react-router";
+import { NProgress } from "redux-nprogress";
+export default class Repos extends Component {
   render() {
-    console.log("lay");
+    const Back = "<< Back";
     return (
       <div className="container">
-        <header>
+        <NProgress />
+        <header className="repos-header">
+          <Link to="/">{Back}</Link>
           <img src={Logo} alt="Github" />
         </header>
         {this.props.children}

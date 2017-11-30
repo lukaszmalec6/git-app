@@ -1,0 +1,27 @@
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgray;
+  img {
+    padding: 2em 0em 2em 0em;
+    max-width: 16em;
+    max-height: 16em;
+  }
+}
+
+.repos-header {
+  justify-content: space-between;
+  img {
+    padding: 1em 2em 1em 2em;
+    max-width: 6em;
+    max-height: 6em;
+  }
+  a {
+    padding: 1em 2em 1em 2em;
+    color: white;
+    font-size: 2em;
+    font-weight: normal;
+    text-decoration: none;
+  }
+}
