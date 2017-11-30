@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchUsersList } from "../../redux/Thunk";
 import UserCard from "../dumb/UserCard.jsx";
-
+import UserListPreloader from "../dumb/UsersListPreloaders.jsx";
 class UsersList extends Component {
   componentWillMount() {
     {
@@ -24,7 +24,7 @@ class UsersList extends Component {
       <div className="container">
         <section className="users-list-page">
           {users_loading && users.length === 0 ? (
-            <h1>Loading</h1>
+            <UserListPreloader />
           ) : users_loaded || users.length > 0 ? (
             users.map(user => (
               <UserCard

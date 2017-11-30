@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { fetchUserRepositiories } from "../../redux/Thunk";
 import UserInfo from "../dumb/UserInfo.jsx";
 import RepoCard from "../dumb/RepoCard.jsx";
-class UserRepositiories extends Component {
+class UserRepositories extends Component {
   constructor() {
     super();
     this.state = {
@@ -55,7 +55,7 @@ class UserRepositiories extends Component {
     return (
       <article className="user-repos-page">
         {repo_loading || user_loading ? (
-          <h1>Loading</h1>
+          <h2>Loading...</h2>
         ) : repo_loaded && user_loaded ? (
           <div className="wrapper">
             <UserInfo
@@ -110,4 +110,4 @@ const mapDispatchToProps = dispatch => {
     fetchUserRepositiories: login => dispatch(fetchUserRepositiories(login))
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(UserRepositiories);
+export default connect(mapStateToProps, mapDispatchToProps)(UserRepositories);
