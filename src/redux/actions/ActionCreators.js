@@ -60,3 +60,24 @@ export const fetchUserRepoFailure = error => {
     error
   };
 };
+
+export const search = query => {
+  return {
+    type: types.SEARCH,
+    query
+  };
+};
+
+export const searchFailure = error => {
+  return {
+    type: types.SEARCH_FAILURE,
+    error
+  };
+};
+
+export const searchSuccess = data => {
+  return {
+    type: types.SEARCH_SUCCESS,
+    data
+  };
+};

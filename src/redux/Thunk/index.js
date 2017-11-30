@@ -1,4 +1,4 @@
-import * as ActionCreators from "../actions/ActionsCreators";
+import * as ActionCreators from "../actions/ActionCreators";
 import { beginTask, endTask } from "redux-nprogress";
 import parse from "parse-link-header";
 
@@ -56,5 +56,21 @@ export const fetchUserRepositiories = login => {
           .catch(err => dispatch(ActionCreators.fetchUserRepoFailure(err)));
       })
       .catch(err => dispatch(ActionCreators.fetchUserRepoFailure(err)));
+  };
+};
+
+export const searchUser = query => {
+  return dispatch => {
+    fetch("https://api.github.com/search/users?q=" + query)
+      .then(res => {
+        if (res.status.toString().charAt(0) == 5) {
+          dispatch(ActionCreators.searchFailure("Server error"));
+        }
+        res
+          .json()
+          .then(values => dispatch(ActionCreators.searchSuccess(values)))
+          .catch(err => dispatch(ActionCreators.searchFailure(err)));
+      })
+      .catch(err => dispatch(ActionCreators.searchFailure(err)));
   };
 };

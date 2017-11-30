@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchUserRepositiories } from "../../redux/Thunk";
+import { fetchUserRepositiories } from "../../redux/thunk";
 import UserInfo from "../dumb/UserInfo.jsx";
 import RepoCard from "../dumb/RepoCard.jsx";
 class UserRepositories extends Component {
