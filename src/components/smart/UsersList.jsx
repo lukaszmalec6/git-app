@@ -13,22 +13,36 @@ class UsersList extends Component {
     this.props.fetchUsersList(this.props.next);
   };
   render() {
+    const {
+      users,
+      users_error,
+      users_loading,
+      users_loaded,
+      users_err_msg
+    } = this.props;
     return (
       <div className="container">
         <section className="users-list-page">
-          {this.props.users.map(user => (
-            <UserCard
-              key={user.id}
-              login={user.login}
-              av={user.avatar_url}
-              type={user.type}
-              gitUrl={user.html_url}
-            />
-          ))}
+          {users_loading && users.length === 0 ? (
+            <h1>Loading</h1>
+          ) : users_loaded || users.length > 0 ? (
+            users.map(user => (
+              <UserCard
+                key={user.id}
+                login={user.login}
+                av={user.avatar_url}
+                type={user.type}
+                gitUrl={user.html_url}
+              />
+            ))
+          ) : null}
         </section>
-        <button className="button" onClick={() => this.handlePagination()}>
-          View more
-        </button>
+        {users_loaded ? (
+          <button className="button" onClick={() => this.handlePagination()}>
+            View more
+          </button>
+        ) : null}
+        {users_error ? <h1>{users_err_msg || "Error"}</h1> : null}
       </div>
     );
   }
@@ -37,7 +51,11 @@ class UsersList extends Component {
 const mapStateToProps = state => {
   return {
     users: state.users.users,
-    next: state.users.next.since
+    next: state.users.next.since,
+    users_error: state.users.error,
+    users_loading: state.users.loading,
+    users_loaded: state.users.loaded,
+    users_err_msg: state.users.err_message
   };
 };
 

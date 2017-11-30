@@ -8,7 +8,7 @@ export default class Repos extends Component {
   render() {
     const Back = "<< Back";
     return (
-      <div className="container">
+      <div>
         <NProgress />
         <header className="repos-header">
           <Link to="/">{Back}</Link>

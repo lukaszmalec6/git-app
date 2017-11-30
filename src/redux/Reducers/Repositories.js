@@ -2,7 +2,8 @@ const initial = {
   repositories: [],
   loading: false,
   loaded: false,
-  error: false
+  error: false,
+  err_message: ""
 };
 const RepoReducer = (state = initial, action) => {
   switch (action.type) {
@@ -26,7 +27,8 @@ const RepoReducer = (state = initial, action) => {
         ...state,
         error: true,
         loading: false,
-        loaded: true
+        loaded: false,
+        err_message: action.data
       };
     default:
       return state;

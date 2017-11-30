@@ -62,7 +62,25 @@ body {
       }
     }
   }
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1024px) and (max-width: 1199px) {
+    .wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      .user-info {
+        width: 20%;
+        margin-top: 5em;
+        img {
+          width: 20em;
+          height: 20em;
+        }
+      }
+      .repos {
+        width: 80%;
+      }
+    }
+  }
+  @media screen and (min-width: 1200px) {
     .wrapper {
       width: 100%;
       display: flex;

@@ -6,7 +6,7 @@ import { NProgress } from "redux-nprogress";
 export default class Users extends Component {
   render() {
     return (
-      <div className="container">
+      <div>
         <NProgress />
         <header>
           <img src={Logo} alt="Github" />

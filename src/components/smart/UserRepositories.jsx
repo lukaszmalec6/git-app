@@ -22,8 +22,17 @@ class UserRepositiories extends Component {
   render() {
     const { currentPage, perPage } = this.state;
     const { login, avatar_url, location, type } = this.props.user;
-    const { repositories } = this.props;
-    const { repo_loaded } = this.props;
+    const {
+      repositories,
+      repo_loaded,
+      repo_loading,
+      repo_error,
+      user_loaded,
+      user_loading,
+      user_error,
+      repo_err_msg,
+      user_err_msg
+    } = this.props;
     const indexOfLast = currentPage * perPage;
     const indexOfFirst = indexOfLast - perPage;
     const current = repositories.slice(indexOfFirst, indexOfLast);
@@ -45,7 +54,9 @@ class UserRepositiories extends Component {
     });
     return (
       <article className="user-repos-page">
-        {repo_loaded ? (
+        {repo_loading || user_loading ? (
+          <h1>Loading</h1>
+        ) : repo_loaded && user_loaded ? (
           <div className="wrapper">
             <UserInfo
               login={login}
@@ -70,18 +81,27 @@ class UserRepositiories extends Component {
             </section>
           </div>
         ) : null}
+        {user_error ? (
+          <h1>{user_err_msg || "Error"}</h1>
+        ) : repo_err_msg ? (
+          <h1>{repo_err_msg || "Error"}}</h1>
+        ) : null}
       </article>
     );
   }
 }
 const mapStateToProps = state => {
-  console.log(state);
   return {
+    repo_err_msg: state.repositories.err_message,
     repo_loading: state.repositories.loading,
     repo_loaded: state.repositories.loaded,
     repo_error: state.repositories.error,
     repositories: state.repositories.repositories,
-    user: state.user.user
+    user: state.user.user,
+    user_err_msg: state.user.err_message,
+    user_loading: state.user.loading,
+    user_loaded: state.user.loaded,
+    user_error: state.user.error
   };
 };
 

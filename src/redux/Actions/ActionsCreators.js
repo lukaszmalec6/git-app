@@ -15,9 +15,10 @@ export const fetchGitUsersSuccess = (data, next) => {
   };
 };
 
-export const fetchGitUsersFailure = () => {
+export const fetchGitUsersFailure = error => {
   return {
-    type: types.FETCH_GIT_USERS_FAILURE
+    type: types.FETCH_GIT_USERS_FAILURE,
+    error
   };
 };
 
@@ -34,9 +35,10 @@ export const fetchSingleUserSuccess = data => {
   };
 };
 
-export const fetchSingleUserFailure = () => {
+export const fetchSingleUserFailure = error => {
   return {
-    type: types.FETCH_SINGLE_USER_FAILURE
+    type: types.FETCH_SINGLE_USER_FAILURE,
+    error
   };
 };
 export const fetchUserRepo = () => {
@@ -52,8 +54,9 @@ export const fetchUserRepoSuccess = data => {
   };
 };
 
-export const fetchUserRepoFailure = () => {
+export const fetchUserRepoFailure = error => {
   return {
-    type: types.FETCH_USER_REPO_FAILURE
+    type: types.FETCH_USER_REPO_FAILURE,
+    error
   };
 };

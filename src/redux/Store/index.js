@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from "redux";
-import rootReducer from "../Reducers";
+import rootReducer from "../reducers";
 import thunk from "redux-thunk";
 import { nprogressMiddleware } from "redux-nprogress";
 export const configureStore = () => {
