@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { fetchUsersList } from "../../redux/Thunk";
 import UserCard from "../dumb/UserCard/UserCard.jsx";
 class UsersList extends Component {

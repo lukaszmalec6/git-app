@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchUserRepositiories } from "../../redux/Thunk";
+
 class UserRepositiories extends Component {
   componentWillMount() {
     this.props.fetchUserRepositiories(this.props.location.pathname);
