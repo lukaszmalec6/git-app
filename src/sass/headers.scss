@@ -1,20 +1,30 @@
+@import "./colors";
 header {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: lightgray;
-  img {
-    padding: 2em 0em 2em 0em;
-    max-width: 16em;
-    max-height: 16em;
+  padding: 3em;
+  box-shadow: 0em 0.4em 0.4em rgba(0, 0, 0, 0.178);
+  background: #feffff;
+  background: -moz-linear-gradient(top, #feffff 0%, #d2ebf9 100%);
+  background: -webkit-linear-gradient(top, #feffff 0%, #d2ebf9 100%);
+  background: linear-gradient(to bottom, #feffff 0%, #d2ebf9 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(
+      startColorstr="#feffff",
+      endColorstr="#d2ebf9",
+      GradientType=0
+    ); /* IE6-9 */
+  .searchbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   input {
-    margin: 1em;
-    padding: 0.4em;
+    margin: 0.4em;
+    padding: 0.5em;
   }
 }
-
 .repos-header {
   flex-direction: row;
   justify-content: space-between;
@@ -24,20 +34,21 @@ header {
     justify-content: center;
     align-items: center;
   }
-  img {
-    padding: 1em 2em 1em 2em;
-    max-width: 6em;
-    max-height: 6em;
-  }
-  a {
+  .go-back {
+    align-self: flex-start;
     padding: 1em 2em 1em 2em;
     color: white;
     font-size: 2em;
     font-weight: normal;
     text-decoration: none;
+    cursor: pointer;
+    :nth-child(1) {
+      color: $darkGray;
+    }
   }
-
   @media screen and (max-width: 767px) {
+    padding: 0.5em;
+    padding-bottom: 3em;
     flex-direction: column;
     div {
       flex-direction: column;

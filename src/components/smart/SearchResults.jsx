@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import UserCard from "../dumb/UserCard.jsx";
+import FaSpinner from "react-icons/lib/fa/spinner";
 class SearchResults extends Component {
   render() {
     const { total_count, results, loading, loaded, error } = this.props;
@@ -9,6 +10,7 @@ class SearchResults extends Component {
         <article className="users-list-page">
           {loading ? (
             <div className="informer">
+              <FaSpinner size={30} color="#393939" />
               <h3>Loading</h3>
             </div>
           ) : loaded ? (

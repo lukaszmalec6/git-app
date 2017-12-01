@@ -38,13 +38,15 @@ class UsersList extends Component {
           ) : null}
         </article>
         {users_loaded ? (
-          <button className="button" onClick={() => this.handlePagination()}>
+          <button
+            className="button button-view-more"
+            onClick={() => this.handlePagination()}
+          >
             View more
           </button>
         ) : null}
         {users_error ? (
           <div className="informer">
-            {" "}
             <h3>{users_err_msg || "Error"}</h3>{" "}
           </div>
         ) : null}

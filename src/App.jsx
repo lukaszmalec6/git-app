@@ -12,9 +12,9 @@ export default class App extends Component {
       <Router history={browserHistory}>
         <Route component={UsersLayout}>
           <Route exact path="/" component={UsersList} />
-          <Route exact path="/search" component={SearchResults} />
         </Route>
         <Route component={ReposLayout}>
+          <Route exact path="/search" component={SearchResults} />
           <Route path="/:login" component={UserRepositiories} />
         </Route>
       </Router>

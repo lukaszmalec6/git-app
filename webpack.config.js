@@ -8,6 +8,11 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 });
 
 module.exports = {
+  node: {
+    net: "empty",
+    tls: "empty",
+    dns: "empty"
+  },
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "public") || "public",

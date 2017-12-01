@@ -11,29 +11,37 @@ h1,
 h2,
 h3 {
   margin: 0;
-  a {
-    text-decoration: none;
-  }
 }
 body {
   font-size: 8px;
   font-family: "Roboto", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  button {
+    background-color: transparent;
+    border-color: transparent;
+  }
+  a {
+    text-decoration: none;
+  }
 }
 .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
+.informer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  margin-top: 15em;
+}
 .users-list-page {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  .informer {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-top: 15em;
-  }
+
   @media screen and (min-width: 650px) and (max-width: 1023px) {
     align-items: center;
     flex-direction: row;

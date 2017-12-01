@@ -1,15 +1,50 @@
 @import "./colors.scss";
 .button {
-  align-self: center;
+  cursor: pointer;
   margin: 0.4em;
-  padding: 0.8em 1em 0.8em 1em;
-  border-radius: 10%;
   font-size: 2em;
-  background-color: $coolBlue;
   box-shadow: 0em 0.4em 0.4em rgba(0, 0, 0, 0.178);
+  -webkit-box-shadow: 0em 0.4em 0.4em rgba(0, 0, 0, 0.178);
   a {
-    color: white;
     text-align: center;
-    text-decoration: none;
   }
+}
+
+.button-search {
+  padding: 0.3em 0.6em 0.3em 0.6em;
+  border: 0.05em solid $darkGray;
+}
+
+.button-search:hover {
+  box-shadow: 0em 0.3em 0.4em rgba(0, 0, 0, 0.507);
+  border-color: $coolBlue;
+}
+
+.button-search,
+.button-card,
+.button-view-more {
+  -webkit-transition: border-color 0.5s, box-shadow 0.7s;
+  transition: border-color 0.5s, box-shadow 0.5s;
+}
+
+.button-card {
+  padding: 0.6em 0.7em 0.6em 0.7em;
+  background-color: $superlightGray;
+  color: $darkGray;
+}
+.button-card:hover {
+  box-shadow: 0em 0.3em 0.4em rgba(0, 0, 0, 0.507);
+  color: $coolBlue;
+}
+
+.button-view-more {
+  margin: 1em;
+  padding: 0.3em 0.6em 0.3em 0.6em;
+  align-self: center;
+  border: 0.05em solid $lightGray;
+  color: $darkGray;
+}
+.button-view-more:hover {
+  box-shadow: 0em 0.3em 0.4em rgba(0, 0, 0, 0.507);
+  color: $coolBlue;
 }

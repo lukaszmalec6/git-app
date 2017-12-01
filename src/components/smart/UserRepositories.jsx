@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchUserRepositiories } from "../../redux/thunk";
 import UserInfo from "../dumb/UserInfo.jsx";
 import RepoCard from "../dumb/RepoCard.jsx";
+import FaSpinner from "react-icons/lib/fa/spinner";
 class UserRepositories extends Component {
   constructor() {
     super();
@@ -55,7 +56,10 @@ class UserRepositories extends Component {
     return (
       <article className="user-repos-page">
         {repo_loading || user_loading ? (
-          <h2>Loading...</h2>
+          <div className="informer">
+            <FaSpinner size={30} color="#393939" />
+            <h3>Loading</h3>
+          </div>
         ) : repo_loaded && user_loaded ? (
           <div className="wrapper">
             <UserInfo

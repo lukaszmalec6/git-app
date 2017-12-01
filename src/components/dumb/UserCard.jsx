@@ -18,7 +18,8 @@ export default class UserCard extends Component {
           </Link>
         </div>
         <div>
-          <Button url={gitUrl} title="Github" />
+          <Button link login={login} title="Repos" card />
+          <Button url={gitUrl} title="Github" card />
         </div>
       </section>
     );
