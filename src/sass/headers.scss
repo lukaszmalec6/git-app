@@ -16,7 +16,14 @@ header {
 }
 
 .repos-header {
+  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   img {
     padding: 1em 2em 1em 2em;
     max-width: 6em;
@@ -28,5 +35,15 @@ header {
     font-size: 2em;
     font-weight: normal;
     text-decoration: none;
+  }
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    div {
+      flex-direction: column;
+    }
+    a {
+      align-self: flex-start;
+    }
   }
 }

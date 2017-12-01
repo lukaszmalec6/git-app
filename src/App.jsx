@@ -5,12 +5,14 @@ import UsersLayout from "./layout/users.jsx";
 import ReposLayout from "./layout/repos.jsx";
 import UsersList from "./components/smart/UsersList.jsx";
 import UserRepositiories from "./components/smart/UserRepositories.jsx";
+import SearchResults from "./components/smart/SearchResults.jsx";
 export default class App extends Component {
   render() {
     return (
       <Router history={browserHistory}>
         <Route component={UsersLayout}>
           <Route exact path="/" component={UsersList} />
+          <Route exact path="/search" component={SearchResults} />
         </Route>
         <Route component={ReposLayout}>
           <Route path="/:login" component={UserRepositiories} />

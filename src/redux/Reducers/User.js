@@ -28,7 +28,7 @@ const UserReducer = (state = initial, action) => {
         loading: false,
         loaded: true,
         error: false,
-        err_message: action.data
+        err_message: action.error
       };
     default:
       return state;

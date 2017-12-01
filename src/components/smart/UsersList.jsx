@@ -22,7 +22,7 @@ class UsersList extends Component {
     } = this.props;
     return (
       <div className="container">
-        <section className="users-list-page">
+        <article className="users-list-page">
           {users_loading && users.length === 0 ? (
             <UserListPreloader />
           ) : users_loaded || users.length > 0 ? (
@@ -36,13 +36,18 @@ class UsersList extends Component {
               />
             ))
           ) : null}
-        </section>
+        </article>
         {users_loaded ? (
           <button className="button" onClick={() => this.handlePagination()}>
             View more
           </button>
         ) : null}
-        {users_error ? <h1>{users_err_msg || "Error"}</h1> : null}
+        {users_error ? (
+          <div className="informer">
+            {" "}
+            <h3>{users_err_msg || "Error"}</h3>{" "}
+          </div>
+        ) : null}
       </div>
     );
   }

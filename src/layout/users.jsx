@@ -6,7 +6,7 @@ import { NProgress } from "redux-nprogress";
 import SearchBox from "../components/smart/SearchBox.jsx";
 export default class Users extends Component {
   handleRedirect = () => {
-    this.props.router.push("/lukaszmalec6");
+    this.props.router.push("/search");
   };
   render() {
     return (

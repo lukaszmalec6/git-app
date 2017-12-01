@@ -28,7 +28,7 @@ const RepoReducer = (state = initial, action) => {
         error: true,
         loading: false,
         loaded: false,
-        err_message: action.data
+        err_message: action.error
       };
     default:
       return state;

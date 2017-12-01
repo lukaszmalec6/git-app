@@ -15,7 +15,6 @@ const SearchReducer = (state = initial, action) => {
         error: false
       };
     case "SEARCH_SUCCESS":
-      console.log(action.data);
       return {
         ...state,
         results: action.data,
@@ -24,12 +23,13 @@ const SearchReducer = (state = initial, action) => {
         error: false
       };
     case "SEARCH_FAILURE":
+      console.log(action.data);
       return {
         ...state,
         loading: false,
-        loaded: true,
-        error: false,
-        err_message: action.data
+        loaded: false,
+        error: true,
+        err_message: action.error
       };
     default:
       return state;

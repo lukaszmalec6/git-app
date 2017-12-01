@@ -25,6 +25,11 @@ export default class UsersListPreloader extends Component {
           <UserCardPreloader />
           <UserCardPreloader />
           <UserCardPreloader />
+          <UserCardPreloader />
+          <UserCardPreloader />
+          <UserCardPreloader />
+          <UserCardPreloader />
+          <UserCardPreloader />
         </section>
       </div>
     );

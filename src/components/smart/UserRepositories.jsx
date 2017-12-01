@@ -35,7 +35,7 @@ class UserRepositories extends Component {
     } = this.props;
     const indexOfLast = currentPage * perPage;
     const indexOfFirst = indexOfLast - perPage;
-    const current = repositories.slice(indexOfFirst, indexOfLast);
+    const currentRepos = repositories.slice(indexOfFirst, indexOfLast);
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(repositories.length / perPage); i++) {
       pageNumbers.push(i);
@@ -66,17 +66,21 @@ class UserRepositories extends Component {
             />
 
             <section className="repos">
-              {current.map(repo => (
-                <RepoCard
-                  key={repo.id}
-                  name={repo.name}
-                  description={repo.description}
-                  lang={repo.language}
-                  url={repo.html_url}
-                  stars={repo.stargazers_count}
-                  watchers={repo.watchers_count}
-                />
-              ))}
+              {currentRepos.length > 0 ? (
+                currentRepos.map(repo => (
+                  <RepoCard
+                    key={repo.id}
+                    name={repo.name}
+                    description={repo.description}
+                    lang={repo.language}
+                    url={repo.html_url}
+                    stars={repo.stargazers_count}
+                    watchers={repo.watchers_count}
+                  />
+                ))
+              ) : (
+                <h3 style={{ marginTop: "5em" }}>No repositories</h3>
+              )}
               <ul className="page-numbers">{renderPageNumbers}</ul>
             </section>
           </div>

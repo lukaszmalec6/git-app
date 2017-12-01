@@ -8,8 +8,9 @@ export const fetchUsersList = since => {
     dispatch(ActionCreators.fetchGitUsers(since));
     fetch("https://api.github.com/users?since=" + since)
       .then(res => {
-        if (res.status.toString().charAt(0) == 5) {
+        if (res.status.toString().charAt(0) == 5 || !res) {
           dispatch(ActionCreators.fetchGitUsersFailure("Server error"));
+          return;
         }
         let headers = parse(res.headers.get("Link"));
         res
@@ -18,9 +19,15 @@ export const fetchUsersList = since => {
             dispatch(ActionCreators.fetchGitUsersSuccess(values, headers.next));
             dispatch(endTask());
           })
-          .catch(err => dispatch(ActionCreators.fetchGitUsersFailure(err)));
+          .catch(err =>
+            dispatch(
+              ActionCreators.fetchGitUsersFailure("Loading data failure")
+            )
+          );
       })
-      .catch(err => dispatch(ActionCreators.fetchGitUsersFailure(err)));
+      .catch(err =>
+        dispatch(ActionCreators.fetchGitUsersFailure("Unknown error"))
+      );
   };
 };
 
@@ -30,22 +37,30 @@ export const fetchUserRepositiories = login => {
     dispatch(ActionCreators.fetchSingleUser(login));
     fetch("https://api.github.com/users" + login)
       .then(res => {
-        if (res.status.toString().charAt(0) == 5) {
+        if (res.status.toString().charAt(0) == 5 || !res) {
           dispatch(ActionCreators.fetchSingleUserFailure("Server error"));
+          return;
         }
         res
           .json()
           .then(values =>
             dispatch(ActionCreators.fetchSingleUserSuccess(values))
           )
-          .catch(err => dispatch(ActionCreators.fetchSingleUserFailure(err)));
+          .catch(err =>
+            dispatch(
+              ActionCreators.fetchSingleUserFailure("Loading data failure")
+            )
+          );
       })
-      .catch(err => dispatch(ActionCreators.fetchSingleUserFailure(err)));
+      .catch(err =>
+        dispatch(ActionCreators.fetchSingleUserFailure("Unknown error"))
+      );
     dispatch(ActionCreators.fetchUserRepo());
     fetch("https://api.github.com/users" + login + "/repos")
       .then(res => {
-        if (res.status.toString().charAt(0) == 5) {
+        if (res.status.toString().charAt(0) == 5 || !res) {
           dispatch(ActionCreators.fetchUserRepoFailure("Server error"));
+          return;
         }
         res
           .json()
@@ -53,24 +68,38 @@ export const fetchUserRepositiories = login => {
             dispatch(ActionCreators.fetchUserRepoSuccess(values));
             dispatch(endTask());
           })
-          .catch(err => dispatch(ActionCreators.fetchUserRepoFailure(err)));
+          .catch(err =>
+            dispatch(
+              ActionCreators.fetchUserRepoFailure("Loading data failure")
+            )
+          );
       })
-      .catch(err => dispatch(ActionCreators.fetchUserRepoFailure(err)));
+      .catch(err =>
+        dispatch(ActionCreators.fetchUserRepoFailure("Unknown error"))
+      );
   };
 };
 
 export const searchUser = query => {
   return dispatch => {
+    dispatch(beginTask());
+    dispatch(ActionCreators.search(query));
     fetch("https://api.github.com/search/users?q=" + query)
       .then(res => {
-        if (res.status.toString().charAt(0) == 5) {
+        if (res.status.toString().charAt(0) == 5 || !res) {
           dispatch(ActionCreators.searchFailure("Server error"));
+          return;
         }
         res
           .json()
-          .then(values => dispatch(ActionCreators.searchSuccess(values)))
-          .catch(err => dispatch(ActionCreators.searchFailure(err)));
+          .then(values => {
+            dispatch(ActionCreators.searchSuccess(values));
+            dispatch(endTask());
+          })
+          .catch(err =>
+            dispatch(ActionCreators.searchFailure("Loading data failure"))
+          );
       })
-      .catch(err => dispatch(ActionCreators.searchFailure(err)));
+      .catch(err => dispatch(ActionCreators.searchFailure("Unknown error")));
   };
 };

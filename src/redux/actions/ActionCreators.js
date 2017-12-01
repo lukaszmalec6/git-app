@@ -69,6 +69,7 @@ export const search = query => {
 };
 
 export const searchFailure = error => {
+  console.log(error);
   return {
     type: types.SEARCH_FAILURE,
     error
