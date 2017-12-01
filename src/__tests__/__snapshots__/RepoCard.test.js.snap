@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RepoCard should render correctly 1`] = `
+<section
+  className="repo-card-container"
+>
+  <div>
+    <div
+      className="desc"
+    >
+      <a
+        href="something"
+      >
+        <h1>
+          something
+        </h1>
+        <h2>
+          something
+        </h2>
+      </a>
+      <div
+        className="details"
+      >
+        <span
+          style={
+            Object {
+              "backgroundColor": undefined,
+            }
+          }
+        />
+        <h3>
+          something
+        </h3>
+        <span />
+        <h3>
+          Stars: 
+          512
+        </h3>
+        <span />
+        <h3>
+          Watchers: 
+          1024
+        </h3>
+      </div>
+    </div>
+  </div>
+</section>
+`;
