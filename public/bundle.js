@@ -14968,7 +14968,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var escapeSpecialChars = /^[a-zA-Z0-9 ]+$/;
-var query = _joi2.default.string().regex(escapeSpecialChars).min(3).max(60).required();
+var querySchema = _joi2.default.string().regex(escapeSpecialChars).min(3).max(60).required();
 
 var SearchBox = function (_Component) {
   _inherits(SearchBox, _Component);
@@ -14978,14 +14978,24 @@ var SearchBox = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (SearchBox.__proto__ || Object.getPrototypeOf(SearchBox)).call(this));
 
-    _this.runSearch = function () {
-      _this.props.searchUser(_this.state.q);
-      _this.props.redirect();
-    };
-
     _this.handleQuery = function (query) {
       _this.setState({
         q: query
+      });
+    };
+
+    _this.runSearch = function () {
+      _joi2.default.validate(_this.state.q, querySchema, function (err) {
+        if (err) {
+          console.log(err);
+          _this.setState({ validationError: true });
+        } else {
+          _this.props.searchUser(_this.state.q);
+          _this.props.redirect();
+          _this.setState({
+            validationError: false
+          });
+        }
       });
     };
 
@@ -15020,7 +15030,12 @@ var SearchBox = function (_Component) {
             }
           },
           _react2.default.createElement(_search2.default, { size: 20, color: "#393939" })
-        )
+        ),
+        this.state.validationError ? _react2.default.createElement(
+          "p",
+          { className: "error-text" },
+          "Invalid data. Use letters and nubmers."
+        ) : null
       );
     }
   }]);
@@ -24881,14 +24896,26 @@ var Repos = function (_Component) {
   _inherits(Repos, _Component);
 
   function Repos() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     _classCallCheck(this, Repos);
 
-    return _possibleConstructorReturn(this, (Repos.__proto__ || Object.getPrototypeOf(Repos)).apply(this, arguments));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Repos.__proto__ || Object.getPrototypeOf(Repos)).call.apply(_ref, [this].concat(args))), _this), _this.handleRedirect = function () {
+      _this.props.router.push("/search");
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(Repos, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       return _react2.default.createElement(
         "div",
         null,
@@ -24897,15 +24924,17 @@ var Repos = function (_Component) {
           "header",
           { className: "repos-header" },
           _react2.default.createElement(
-            _reactRouter.Link,
-            { to: "/" },
-            _react2.default.createElement(_arrowLeft2.default, { size: 30, color: "#393939" })
+            "div",
+            { className: "go-back", onClick: function onClick() {
+                return _this2.props.router.goBack();
+              } },
+            _react2.default.createElement(_arrowLeft2.default, { size: 30 })
           ),
           _react2.default.createElement(
             "div",
             null,
             _react2.default.createElement(_githubAlt2.default, { size: 50, color: "#393939" }),
-            _react2.default.createElement(_SearchBox2.default, null)
+            _react2.default.createElement(_SearchBox2.default, { redirect: this.handleRedirect })
           )
         ),
         this.props.children
