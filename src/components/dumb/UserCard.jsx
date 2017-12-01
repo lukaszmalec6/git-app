@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Button from "./Button.jsx";
 import { Link } from "react-router";
+import PropTypes from "prop-types";
 export default class UserCard extends Component {
   render() {
     const { av, login, gitUrl, type } = this.props;
@@ -25,3 +26,9 @@ export default class UserCard extends Component {
     );
   }
 }
+UserCard.propTypes = {
+  login: PropTypes.string.isRequired,
+  av: PropTypes.string.isRequired,
+  gitUrl: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired
+};

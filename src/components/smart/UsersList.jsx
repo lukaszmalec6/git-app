@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchUsersList } from "../../redux/thunk";
 import UserCard from "../dumb/UserCard.jsx";
 import UserListPreloader from "../dumb/UsersListPreloaders.jsx";
+import PropTypes from "prop-types";
 class UsersList extends Component {
   componentWillMount() {
     {
@@ -72,3 +73,12 @@ const mapDispatchToProps = dispatch => {
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(UsersList);
+UsersList.UsersList = {
+  fetchUsersList: PropTypes.func.isRequired,
+  next: PropTypes.string,
+  users_loading: PropTypes.bool.isRequired,
+  users_loaded: PropTypes.bool.isRequired,
+  users_error: PropTypes.bool.isRequired,
+  users: PropTypes.array,
+  users_err_msg: PropTypes.string
+};

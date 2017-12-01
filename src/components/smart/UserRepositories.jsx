@@ -4,6 +4,7 @@ import { fetchUserRepositiories } from "../../redux/thunk";
 import UserInfo from "../dumb/UserInfo.jsx";
 import RepoCard from "../dumb/RepoCard.jsx";
 import FaSpinner from "react-icons/lib/fa/spinner";
+import PropTypes from "prop-types";
 class UserRepositories extends Component {
   constructor() {
     super();
@@ -22,7 +23,7 @@ class UserRepositories extends Component {
   }
   render() {
     const { currentPage, perPage } = this.state;
-    const { login, avatar_url, location, type } = this.props.user;
+    const { login, avatar_url, location, type, name } = this.props.user;
     const {
       repositories,
       repo_loaded,
@@ -67,6 +68,7 @@ class UserRepositories extends Component {
               av={avatar_url}
               location={location}
               type={type}
+              name={name}
             />
 
             <section className="repos">
@@ -119,3 +121,16 @@ const mapDispatchToProps = dispatch => {
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(UserRepositories);
+UserRepositories.propTypes = {
+  fetchUserRepositiories: PropTypes.func.isRequired,
+  repo_err_msg: PropTypes.string,
+  repo_loading: PropTypes.bool.isRequired,
+  repo_loaded: PropTypes.bool.isRequired,
+  repo_error: PropTypes.bool.isRequired,
+  repositories: PropTypes.array,
+  user: PropTypes.object,
+  user_err_msg: PropTypes.string,
+  user_loading: PropTypes.bool.isRequired,
+  user_loaded: PropTypes.bool.isRequired,
+  user_error: PropTypes.bool.isRequired
+};

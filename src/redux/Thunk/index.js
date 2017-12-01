@@ -43,9 +43,17 @@ export const fetchUserRepositiories = login => {
         }
         res
           .json()
-          .then(values =>
-            dispatch(ActionCreators.fetchSingleUserSuccess(values))
-          )
+          .then(values => {
+            let data = {
+              avatar_url: values.avatar_url,
+              html_url: values.html_url,
+              location: values.location,
+              login: values.login,
+              name: values.name,
+              type: values.type
+            };
+            dispatch(ActionCreators.fetchSingleUserSuccess(data));
+          })
           .catch(err =>
             dispatch(
               ActionCreators.fetchSingleUserFailure("Loading data failure")

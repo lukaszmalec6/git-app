@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import UserCard from "../dumb/UserCard.jsx";
 import FaSpinner from "react-icons/lib/fa/spinner";
+import PropTypes from "prop-types";
 class SearchResults extends Component {
   render() {
     const { total_count, results, loading, loaded, error } = this.props;
@@ -46,7 +47,6 @@ class SearchResults extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.search);
   return {
     loading: state.search.loading,
     loaded: state.search.loaded,
@@ -56,5 +56,13 @@ const mapStateToProps = state => {
     total_count: state.search.results.total_count
   };
 };
-
 export default connect(mapStateToProps)(SearchResults);
+
+SearchResults.propTypes = {
+  total_count: PropTypes.number.isRequired,
+  results: PropTypes.array,
+  loading: PropTypes.bool.isRequired,
+  loaded: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
+  err_message: PropTypes.string
+};

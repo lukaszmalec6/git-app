@@ -1,12 +1,12 @@
 import { Route } from "react-router";
 import React, { Component } from "react";
 import "../sass/main.scss";
-import Logo from "../assets/github.png";
 import { Link } from "react-router";
 import { NProgress } from "redux-nprogress";
 import SearchBox from "../components/smart/SearchBox.jsx";
 import FaArrowLeft from "react-icons/lib/fa/arrow-left";
 import FaGithubAlt from "react-icons/lib/fa/github-alt";
+
 export default class Repos extends Component {
   handleRedirect = () => {
     this.props.router.push("/search");

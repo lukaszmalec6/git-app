@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Button from "../dumb/Button.jsx";
 import Colors from "../dumb/LangColors.json";
-export default class UserCard extends Component {
+import PropTypes from "prop-types";
+export default class RepoCard extends Component {
   render() {
     const { name, description, lang, url, stars, watchers } = this.props;
     return (
@@ -26,3 +27,11 @@ export default class UserCard extends Component {
     );
   }
 }
+RepoCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  lang: PropTypes.string,
+  url: PropTypes.string.isRequired,
+  stars: PropTypes.number.isRequired,
+  watchers: PropTypes.number.isRequired
+};
