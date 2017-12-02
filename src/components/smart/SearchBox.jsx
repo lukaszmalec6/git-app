@@ -3,6 +3,10 @@ import { connect } from "react-redux";
 import { searchUser } from "../../redux/thunk";
 import FaSearch from "react-icons/lib/fa/search";
 import PropTypes from "prop-types";
+
+/* JOI provides validation.
+   Joi schema:
+*/
 import Joi from "joi";
 const escapeSpecialChars = /^[a-zA-Z0-9 ]+$/;
 const querySchema = Joi.string()
@@ -10,6 +14,7 @@ const querySchema = Joi.string()
   .min(3)
   .max(60)
   .required();
+
 class SearchBox extends Component {
   constructor() {
     super();
@@ -24,6 +29,7 @@ class SearchBox extends Component {
     });
   };
   runSearch = () => {
+    // Joi validation
     Joi.validate(this.state.q, querySchema, err => {
       if (err) {
         this.setState({ validationError: true });
@@ -67,7 +73,7 @@ const mapDispatchToProps = dispatch => {
     searchUser: query => dispatch(searchUser(query))
   };
 };
-export default connect(mapDispatchToProps)(SearchBox);
+export default connect(null, mapDispatchToProps)(SearchBox);
 
 SearchBox.propTypes = {
   searchUser: PropTypes.func.isRequired,

@@ -35,6 +35,12 @@ class UserRepositories extends Component {
       repo_err_msg,
       user_err_msg
     } = this.props;
+
+    /* 
+    Classic pagination logic. 
+    Calculating index, slicing array for render
+    Render page numbers
+    */
     const indexOfLast = currentPage * perPage;
     const indexOfFirst = indexOfLast - perPage;
     const currentRepos = repositories.slice(indexOfFirst, indexOfLast);

@@ -14,6 +14,10 @@ class UsersList extends Component {
     this.props.fetchUsersList(this.props.next);
   };
   render() {
+    /* 
+    Pagination based on sending GET request to api when user wants to see more github users.
+    In my opinion,classic pagination (with pages) would cause to much requests to api.
+    */
     const {
       users,
       users_error,
@@ -43,7 +47,7 @@ class UsersList extends Component {
             className="button button-view-more"
             onClick={() => this.handlePagination()}
           >
-            View more
+            Show more
           </button>
         ) : null}
         {users_error ? (

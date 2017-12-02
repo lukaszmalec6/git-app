@@ -59,7 +59,7 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps)(SearchResults);
 
 SearchResults.propTypes = {
-  total_count: PropTypes.number.isRequired,
+  total_count: PropTypes.number,
   results: PropTypes.array,
   loading: PropTypes.bool.isRequired,
   loaded: PropTypes.bool.isRequired,

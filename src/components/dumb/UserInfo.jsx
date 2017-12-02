@@ -16,7 +16,7 @@ export default class UserInfo extends Component {
   }
 }
 UserInfo.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   login: PropTypes.string.isRequired,
   av: PropTypes.string.isRequired,
   location: PropTypes.string,

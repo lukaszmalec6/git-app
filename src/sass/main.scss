@@ -5,6 +5,7 @@
 @import "./buttons.scss";
 @import "./pagination.scss";
 @import "./preloaders.scss";
+@import "./breakpoints.scss";
 $screen-sm: 576px;
 body,
 h1,
@@ -23,41 +24,36 @@ body {
     text-decoration: none;
   }
 }
-.container {
+
+.container,
+.informer,
+.users-list-page,
+.user-repos-page {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .informer {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   width: 100%;
-  justify-content: center;
+
   margin-top: 15em;
 }
 .users-list-page {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  @media screen and (min-width: 650px) and (max-width: 1023px) {
+  @media screen and (min-width: $mobile) and (max-width: 1023px) {
     align-items: center;
     flex-direction: row;
     flex-flow: row wrap;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: $tablet) {
     align-items: center;
     flex-direction: row;
     flex-flow: row wrap;
   }
 }
 .user-repos-page {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
   .wrapper {
     width: 100%;
@@ -78,7 +74,7 @@ body {
       }
     }
   }
-  @media screen and (min-width: 1024px) and (max-width: 1199px) {
+  @media screen and (min-width: $tablet) and (max-width: 1199px) {
     .wrapper {
       width: 100%;
       display: flex;
@@ -96,7 +92,7 @@ body {
       }
     }
   }
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: $laptop) {
     .wrapper {
       width: 100%;
       display: flex;
