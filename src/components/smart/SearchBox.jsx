@@ -61,7 +61,9 @@ class SearchBox extends Component {
           <FaSearch size={20} color="#393939" />
         </button>
         {this.state.validationError ? (
-          <p className="error-text">Invalid data. Use letters and nubmers.</p>
+          <p className="error-text">
+            Invalid data. Use letters and nubmers(min 3).
+          </p>
         ) : null}
       </span>
     );
